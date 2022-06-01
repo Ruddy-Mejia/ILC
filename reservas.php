@@ -51,7 +51,7 @@
                     <li><a href='reservas.html'><span>Reservas</span></a></li>
                     <li><a href='galerias.html'><span>Galería</span></a></li>
                     <li><a href='tour_virtual.html'><span>Tour virtual</span></a></li>
-                    <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>                    
+                    <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
                 </ul>
             </div>
         </header>
@@ -71,9 +71,10 @@
                 </div>
             </div>
         </center>
+        
         <div align="center">
             <div align="center" style="width: 500px;">
-                <form method="POST">
+                <form action="consulta.php" method="POST">
                     <div class="row mb-3">
                         <label class="col-sm-12 col-form-label">Buscar por nombre: </label>
                         <div class="col-sm-12">
@@ -84,6 +85,7 @@
                 </form>
             </div>
         </div>
+        
         <br><br><br>
         <?php
         $conn = mysqli_connect("localhost", "root", "", "ilc");
@@ -96,7 +98,7 @@
                 <td>NOMBRE</td>
                 <td>DESCRIPCION</td>
                 <td>UBICACION</td>
-                <td>IMAGEN</td>                
+                <td>IMAGEN</td>
             </tr>
             <?php
             $ss = mysqli_query($conn, "SELECT *FROM hotel");
@@ -112,12 +114,13 @@
                 </tr>
             <?php    } ?>
         </table>
-        <?php 
-            if(isset($_REQUEST['buscar'])){
-                $nombre = $_POST['palabra'];
-                $query = "select * from hotel where nombre = $nombre";
 
-            }        
+
+        <?php
+        if (isset($_REQUEST['buscar'])) {
+            $nombre = $_POST['palabra'];
+            $query = "select * from hotel where nombre = $nombre";
+        }
         ?>
 
         </form>
