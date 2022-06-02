@@ -1,0 +1,7 @@
+.contenedor{    
+    width: 80%; 
+    /*para alinear texto*/
+    text-align: center;
+    /*alinear elementos de tipo bloque*/
+    margin: auto;    
+}
