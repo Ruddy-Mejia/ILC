@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <!-- Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -52,26 +53,27 @@
                     <li><a href='galerias.html'><span>Galería</span></a></li>
                     <li><a href='tour_virtual.html'><span>Tour virtual</span></a></li>
                     <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
+                    <li><a href='eliminar_hoteles.php'><span>Eliminar hoteles</span></a></li>
                 </ul>
             </div>
         </header>
 
-        <center>
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 600px;">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/calvario.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Playa.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Chinkana.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
-                    </div>
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 600px; text-align:center; margin:auto;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/calvario.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/Playa.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/Chinkana.jpg" class="d-block w-100" alt="..." style="width: 350px;height: 350px">
                 </div>
             </div>
-        </center>
-        
+        </div>
+
+
         <div align="center">
             <div align="center" style="width: 500px;">
                 <form action="consulta.php" method="POST">
@@ -85,7 +87,7 @@
                 </form>
             </div>
         </div>
-        
+
         <br><br><br>
         <?php
         $conn = mysqli_connect("localhost", "root", "", "ilc");
@@ -93,35 +95,52 @@
             die("No hay conexion: " . mysqli_connect_error());
         }
         ?>
-        <table class="table table-bordered border-primary table-dark">
-            <tr>
-                <td>NOMBRE</td>
-                <td>DESCRIPCION</td>
-                <td>UBICACION</td>
-                <td>IMAGEN</td>
-            </tr>
+        
+
+        <div style="width: 90%; margin:auto; border: 10px solid;">
             <?php
             $ss = mysqli_query($conn, "SELECT *FROM hotel");
             while ($rr = mysqli_fetch_array($ss)) {
             ?>
+                <div style="text-align: center; margin:auto; font-size:xx-large;font-weight:bolder;">
+                    <?php echo $rr['nombre']; ?>
+                </div>                
+                <div style="width: 50%;">
+                    <?php echo $rr['descripcion']; ?>                    
+                </div>
+                <div>
+                    <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
+                </div>
+                <br>
+                <div>
+                    <a href="<?php echo $rr['ubicacion']; ?>">
+                        <i class="bi bi-share-fill"></i>
+                    </a>
+                </div>
+                <div style="text-align: right;">
+                    
+                </div>
+                <br>
+                <div style="text-align: center; margin:auto;">
+                    <button type="submit" class="btn btn-primary" name="reservar">Reservar</button>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" name="Eliminar">Eliminar</button>
+                </div>
+            <?php    } ?>            
+        </div>
+        <br><br><br>
+        <table class="table table-dark table-borderless">
+            <thead>
                 <tr>
-                    <td><?php echo $rr['nombre']; ?></td>
-                    <td><?php echo $rr['descripcion']; ?></td>
-                    <td><?php echo $rr['ubicacion']; ?></td>
-                    <td>
-                        <img class="mine" width="300px" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
-                    </td>
+                    <th scope="col" style="font-size:xx-large">test</th>
+                    <th scope="row"></th>
+                    <td></td>                    
                 </tr>
-            <?php    } ?>
+            </thead>
         </table>
 
 
-        <?php
-        if (isset($_REQUEST['buscar'])) {
-            $nombre = $_POST['palabra'];
-            $query = "select * from hotel where nombre = $nombre";
-        }
-        ?>
+
 
         </form>
         <script src="js/bootstrap.min.js"></script>
