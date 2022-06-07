@@ -25,7 +25,7 @@
 
 
     <!-- my styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="clases.css">
 
 </head>
 
@@ -95,30 +95,33 @@
             die("No hay conexion: " . mysqli_connect_error());
         }
         ?>
-        
 
+        <!-- 
         <div style="width: 90%; margin:auto; border: 10px solid;">
+            
             <?php
+            /*
             $ss = mysqli_query($conn, "SELECT *FROM hotel");
             while ($rr = mysqli_fetch_array($ss)) {
+                */
             ?>
                 <div style="text-align: center; margin:auto; font-size:xx-large;font-weight:bolder;">
-                    <?php echo $rr['nombre']; ?>
-                </div>                
+                    <?php /*echo $rr['nombre']; ?>
+                </div>
                 <div style="width: 50%;">
-                    <?php echo $rr['descripcion']; ?>                    
+                    <?php echo $rr['descripcion']; ?>
                 </div>
                 <div>
                     <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
                 </div>
                 <br>
                 <div>
-                    <a href="<?php echo $rr['ubicacion']; ?>">
+                    <a href="<?php echo $rr['ubicacion']; */?>">
                         <i class="bi bi-share-fill"></i>
                     </a>
                 </div>
                 <div style="text-align: right;">
-                    
+
                 </div>
                 <br>
                 <div style="text-align: center; margin:auto;">
@@ -126,18 +129,38 @@
                     <br><br>
                     <button type="submit" class="btn btn-primary" name="Eliminar">Eliminar</button>
                 </div>
-            <?php    } ?>            
+            <?php    /*} */?>
+        </div>
+        <br><br><br> -->
+
+        <div class="mycontainer" style="text-align: center; margin:auto;">
+            <?php
+            $ss = mysqli_query($conn, "SELECT *FROM hotel");
+            while ($rr = mysqli_fetch_array($ss)) {
+            ?>
+                <div class="myelement">
+                    <?php echo $rr['nombre']; ?>
+                </div>
+                <div class="myelement1">
+                    <?php echo $rr['descripcion']; ?>
+                    <br><br>  
+                    <p>Compartir</p>               
+                    <a href="<?php echo $rr['ubicacion']; ?>">                        
+                        <i class="bi bi-share-fill"></i>
+                    </a>                    
+                </div>
+                <div>
+                    <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
+                </div>
+                <div class="myelement">
+                    <button type="submit" class="btn btn-primary" name="reservar">Reservar</button>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" name="Eliminar">Eliminar</button>
+                </div>
+            <?php } ?>            
         </div>
         <br><br><br>
-        <table class="table table-dark table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col" style="font-size:xx-large">test</th>
-                    <th scope="row"></th>
-                    <td></td>                    
-                </tr>
-            </thead>
-        </table>
+
 
 
 
