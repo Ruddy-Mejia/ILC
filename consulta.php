@@ -5,7 +5,8 @@ if (!$conn) {
 }
 ?>
 
-<body>
+<body style="background:  #5d6d7e">
+    <div class="logo"><img src="images/logo.png" alt="" /></div>
     <div class="wrap-body">
 
         <head>
@@ -21,17 +22,40 @@ if (!$conn) {
             <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="css/lightbox.css">
             <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
             <!-- Fonts -->
             <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="css/menu.css">
+            <link rel="stylesheet" href="clases.css">
             <script src="js/jquery1111.min.js" type="text/javascript"></script>
             <script src="js/script.js"></script>
 
 
 
-            <!-- my styles -->
-            <link rel="stylesheet" href="styles.css">
+            <style>
+                .myfont {
+                    color: #333333;
+                    font-weight: bolder;
+                    font-family: 'PT Sans', sans-serif;
+                }
+
+                .mycontainer {
+                    width: 90%;
+                    background: #212f3d;
+                    padding: 10px;
+                    border: 5px solid #95a5a6;
+                    margin: 20px;
+
+                    display: flex;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+            </style>
 
         </head>
         <header class="zerogrid">
@@ -39,52 +63,50 @@ if (!$conn) {
             <div id='cssmenu' class="align-center">
                 <ul>
                     <li class="active"><a href='index.html'><span>Inicio</span></a></li>
-                    <li><a href='Presentacion.html'><span>Presentación</span></a>
-
-                    </li>
-                    <li class=' has-sub'><a href='#'><span>Cultura</span></a>
+                    <li><a href='reservas.php'><span>Reservas</span></a></li>
+                    <li><a href='galerias.html'><span>Galería</span></a></li>
+                    <li class=' has-sub'><a href='#'><span>Tour virtual</span></a>
                         <ul>
-                            <li><a href='tradiciones.html'><span>Tradiciones</span></a>
+                            <li><a href='tour.html'><span>Calvario</span></a>
                             </li>
-                            <li><a href='fiestas.html'><span>Fiestas</span></a>
+                            <li><a href='tour1.html'><span>Playa</span></a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href='reservas.html'><span>Reservas</span></a></li>
-                    <li><a href='galerias.html'><span>Galería</span></a></li>
-                    <li><a href='tour_virtual.html'><span>Tour virtual</span></a></li>
+                    <li><a href='info.html'><span>Más Información</span></a></li>
                     <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
+                    <li><a href='eliminar_hoteles.php'><span>Eliminar hoteles</span></a></li>
                 </ul>
             </div>
         </header>
-        <table class="table table-bordered border-primary table-dark">
-            <tr>
-                <td>NOMBRE</td>
-                <td>DESCRIPCION</td>
-                <td>UBICACION</td>
-                <td>IMAGEN</td>
-            </tr>
+        
+        <div class="mycontainer" style="text-align: center; margin:auto;">
             <?php
             $palabra = $_POST['palabra'];
-            $query = "select * from hotel where nombre = '$palabra'";            
-            //echo "<script> alert('correcto: $palabra;') </script>";
-
-            $ss = mysqli_query($conn, $query);               
-                        
-                                                        
-            while ($rr = mysqli_fetch_array($ss)) {                
-                ?>                
-                <tr>
-                    <td><?php echo $rr['nombre']; ?></td>
-                    <td><?php echo $rr['descripcion']; ?></td>
-                    <td><?php echo $rr['ubicacion']; ?></td>
-                    <td>
-                        <img class="mine" width="300px" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
-                    </td>
-                </tr>
-            <?php }?>
-
-        </table>
+            $query = "select * from hotel where nombre = '$palabra'";
+            $ss = mysqli_query($conn,$query);
+            while ($rr = mysqli_fetch_array($ss)) {
+            ?>
+                <div class="myelement">
+                    <?php echo $rr['nombre']; ?>
+                </div>
+                <div class="myelement1">
+                    <?php echo $rr['descripcion']; ?>
+                    <br><br>
+                    <p>Compartir</p>
+                    <a href="<?php echo $rr['ubicacion']; ?>">
+                        <i class="bi bi-share-fill"></i>
+                    </a>
+                </div>
+                <div>
+                    <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
+                </div>
+                <div class="mycontainer" style="border:0px;">
+                    <button type="submit" class="btn btn-primary" name="reservar">Reservar en <?php echo $rr['nombre'];?></button>
+                </div>
+                <br><br><br>
+            <?php } ?>
+        </div>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>

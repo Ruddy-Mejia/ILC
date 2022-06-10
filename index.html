@@ -26,7 +26,13 @@
 	<!--mis estilos-->
 	<link rel="stylesheet" href="clases.css">
 
-
+	<style>
+        .myfont{
+            color: #333333;
+            font-weight: bolder;
+            font-family: 'PT Sans', sans-serif;            
+        }
+    </style>
 </head>
 
 <body style="background:  #5d6d7e  ">
@@ -55,6 +61,14 @@
 					<li><a href='reservas.php'><span>Hoteles</span></a></li>
 					<li><a href='galerias.html'><span>Galería</span></a></li>
 					<li><a href='tour.html'><span>Tour virtual</span></a></li>
+					<li class=' has-sub'><a href='#'><span>Tour virtual</span></a>
+						<ul>
+							<li><a href='tour.html'><span>Calvario</span></a>
+							</li>
+							<li><a href='tour1.html'><span>Playa</span></a>
+							</li>
+						</ul>
+					</li>
 					<li><a href='info.html'><span>Más Información</span></a></li>
 				</ul>
 			</div>
@@ -171,7 +185,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="contenedor" style="font-size: large;">
+			<div class="myfont contenedor" style="font-weight: lighter; font-size: large; color: aliceblue;">
 				Copacabana es una pequeña ciudad turística y un municipio de Bolivia y una de las
 				principales localidades ribereñas del lago Titicaca. Es la capital de la provincia
 				de

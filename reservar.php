@@ -94,22 +94,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div align="center">
-            <div align="center" style="width: 500px;">
-                <form action="consulta.php" method="POST">
-                    <div class="row mb-3">
-                        <label class="col-sm-12 col-form-label myfont" style="color:#fff;">Buscar por nombre: </label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" name="palabra">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="buscar">Buscar</button>
-                </form>
-            </div>
-        </div>
-
         <br><br><br>
         <?php
         $conn = mysqli_connect("localhost", "root", "", "ilc");
@@ -121,26 +105,25 @@
 
         <div class="mycontainer" style="text-align: center; margin:auto;">
             <?php
-            $ss = mysqli_query($conn, "SELECT *FROM hotel");
+            $ss = mysqli_query($conn, "SELECT *FROM habitacion");
             while ($rr = mysqli_fetch_array($ss)) {
             ?>
                 <div class="myelement">
-                    <?php echo $rr['nombre']; ?>
+                <p class="myfont" style="color:#fff;">TIPO</p>
+                    <?php echo $rr['tipo']; ?>
+                </div>
+                <div class="myelement">
+                    <p class="myfont" style="color:#fff;">PRECIO P/NOCHE</p>
+                    <?php echo $rr['precio']. " BOB"; ?>
                 </div>
                 <div class="myelement1">
-                    <?php echo $rr['descripcion']; ?>
-                    <br><br>
-                    <p>Compartir</p>
-                    <a href="<?php echo $rr['ubicacion']; ?>">
-                        <i class="bi bi-share-fill"></i>
-                    </a>
+                    <?php echo $rr['descripcion']; ?>                    
                 </div>
                 <div>
                     <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
                 </div>
                 <div class="mycontainer" style="border:0px;">
-                    <a href="reservar.php" class="btn btn-primary">Reservar en <?php echo $rr['nombre'];?></a>
-                    
+                    <button type="submit" class="btn btn-primary" name="reservar">Reservar</button>
                 </div>
                 <br><br><br>
             <?php } ?>

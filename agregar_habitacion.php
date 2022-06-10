@@ -64,17 +64,19 @@
         die("No hay conexion: " . mysqli_connect_error());
     }
     if (isset($_REQUEST['guardar'])) {
-        if (isset($_FILES['imagen']['name'])) {
-            $TipoArchivo = $_FILES['imagen']['type'];
-            $tamanoArchivo = $_FILES['imagen']['size'];
+        if (isset($_FILES['imagen']['name'])) {            
             $imagenSubida = fopen($_FILES['imagen']['tmp_name'], 'r+');
             $nombreArchivo = $_FILES['imagen']['name'];
+            $tamanoArchivo = $_FILES['imagen']['size'];
             $binariosImagen = fread($imagenSubida, $tamanoArchivo);
-            $nombre = $_POST['nombre'];
-            $ubicacion = $_POST['ubicacion'];
-            $desc = $_POST['desc'];
             $binariosImagen = mysqli_escape_string($conn, $binariosImagen);
-            $query = "insert into hotel (nombre, ubicacion, descripcion, imagen) values ('$nombre','$ubicacion','$desc','$binariosImagen')";
+
+            $hotel = $_POST['id_hotel'];
+            $precio = $_POST['precio'];
+            $tipo = $_POST['tipo'];
+            $desc = $_POST['desc'];
+
+            $query = "insert into habitacion (id_hotel, precio, tipo, descripcion, imagen) values ('$hotel','$precio', '$tipo','$desc','$binariosImagen')";
             $res = mysqli_query($conn, $query);
             if ($res) {
     ?>
@@ -103,13 +105,18 @@
 
     <form name="form-worksd" method="post" style="width: 600px; margin: auto;" enctype="multipart/form-data">
         <div>
-            <label class="myfont">NOMBRE</label>
-            <input type="text" class="form-control col-md-6" name="nombre">
+            <label class="myfont">HOTEL</label>
+            <input type="text" class="form-control col-md-6" name="id_hotel">
         </div>
         <br>
         <div>
-            <label class="myfont">UBICACIÓN</label>
-            <input type="text" class="form-control" name="ubicacion">
+            <label class="myfont">PRECIO P/NOCHE</label>
+            <input type="text" class="form-control" name="precio">
+        </div>
+        <br>
+        <div>
+            <label class="myfont">TIPO</label>
+            <input type="text" class="form-control" name="tipo">
         </div>
         <br>
         <div>
