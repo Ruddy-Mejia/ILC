@@ -73,6 +73,8 @@
                     <li class="active"><a href='index.html'><span>Inicio</span></a></li>
                     <li><a href='reservas.php'><span>Hoteles</span></a></li>
                     <li><a href='tour.php'><span>Tour virtual</span></a></li>
+                    <li><a href='restaurantes.html'><span>Restaurantes</span></a></li>
+                    <li><a href='info.html'><span>Información de viajes</span></a></li>
                 </ul>
             </div>
         </header>

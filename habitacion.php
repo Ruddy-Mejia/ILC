@@ -155,7 +155,8 @@
                 <li class="active"><a href='index.html'><span>Inicio</span></a></li>
                 <li><a href='reservas.php'><span>Hoteles</span></a></li>
                 <li><a href='tour.php'><span>Tour virtual</span></a></li>
-                <li><a href='info.html'><span>Más Información</span></a></li>
+                <li><a href='restaurantes.html'><span>Restaurantes</span></a></li>
+                <li><a href='info.html'><span>Información de viajes</span></a></li>
             </ul>
         </div>
     </header>
@@ -184,16 +185,16 @@
         echo "<script> alert('id = $id_habitacion');</script>";
         */
 
-        if ($entrada > $salida) {
-            echo "<script> alert('Por favor revise las fechas introducidas'); 
+        if ($entrada > $salida ) {
+            echo "<script> alert('Por favor revise los datos introducidos'); 
             window.location = 'reservas.php';
             </script>";
         } else {
-            $q = "insert into reservas (id_habitacion, nombres, apellidos, email) values (23,Ruddy,Mejia,ruddymejiamamani73@gmail.com)";
+            $q = "insert into reservas (id_habitacion, nombres, apellidos, email) values (23,Ian,Fernandez,ianfernandez@gmail.com)";
             //       "insert into reservas (id_habitacion, nombres, apellidos, email) values (,,,)"
-            $query = "insert into reservas (id_habitacion, nombres, apellidos, email) values ($id_habitacion, $nombre, $apellido, $email)";
+            $query = "insert into reservas (id_habitacion, nombres, apellidos, email,fecha_llegada,fecha_salida) values ('$id_habitacion', '$nombre', '$apellido', '$email','$entrada','$salida')";
 
-            if (mysqli_query($conn, $q)) {
+            if (mysqli_query($conn, $query)) {
                 echo "<script> alert('La reserva se realizó con éxito');
                         window.location = 'index.html';
                     </script>";
@@ -223,7 +224,7 @@
             <label class="myfont" style="color:#fff">Fecha salida</label>
             <input type="date" style="width:20%" class="form-control" name="salida">
             <label class="myfont" style="color:#fff">Email</label>
-            <input type="email" style="width:20%" class="form-control" name="email">
+            <input type="text" style="width:20%" class="form-control" name="email">
         </div>
         <?php
         $id_hotel = $_POST['id_hotel'];

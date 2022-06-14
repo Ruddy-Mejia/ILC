@@ -43,6 +43,7 @@
                 <li><a href='agregar_habitacion.php'><span>Agregar habitaciones</span></a></li>
                 <li><a href='register.php'><span>Registrar nuevo administrador</span></a></li>
                 <li><a href='reset-password.php'><span>Cambia de contraseña</span></a></li>
+                <li><a href='mostrar_reservas.php'><span>Lista de reservas</span></a></li>
                 <li><a href='logout.php'><span>Cerrar sesión</span></a></li>
             </ul>
         </div>

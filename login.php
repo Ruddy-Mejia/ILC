@@ -19,17 +19,17 @@ $username_err = $password_err = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if username is empty
-    if (empty(trim($_POST["username"]))) {
+    if (empty(htmlentities($_POST["username"]))) {
         $username_err = "Por favor ingrese su usuario.";
     } else {
-        $username = trim($_POST["username"]);
+        $username = htmlentities($_POST["username"]);
     }
 
     // Check if password is empty
-    if (empty(trim($_POST["password"]))) {
+    if (empty(htmlentities($_POST["password"]))) {
         $password_err = "Por favor ingrese su contraseña.";
     } else {
-        $password = trim($_POST["password"]);
+        $password = htmlentities($_POST["password"]);
     }
 
     // Validate credentials

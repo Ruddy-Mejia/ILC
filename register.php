@@ -10,7 +10,7 @@ $username_err = $password_err = $confirm_password_err = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate username
-    if (empty(trim($_POST["username"]))) {
+    if (empty(htmlentities($_POST["username"]))) {
         $username_err = "Por favor ingrese un usuario.";
     } else {
         // Prepare a select statement
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = htmlentities($_POST["username"]);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     $username_err = "Este usuario ya fue tomado.";
                 } else {
-                    $username = trim($_POST["username"]);
+                    $username = htmlentities($_POST["username"]);
                 }
             } else {
                 echo "Al parecer algo salió mal.";
@@ -43,19 +43,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate password
-    if (empty(trim($_POST["password"]))) {
+    if (empty(htmlentities($_POST["password"]))) {
         $password_err = "Por favor ingresa una contraseña.";
-    } elseif (strlen(trim($_POST["password"])) < 6) {
+    } elseif (strlen(htmlentities($_POST["password"])) < 6) {
         $password_err = "La contraseña al menos debe tener 6 caracteres.";
     } else {
-        $password = trim($_POST["password"]);
+        $password = htmlentities($_POST["password"]);
     }
 
     // Validate confirm password
-    if (empty(trim($_POST["confirm_password"]))) {
+    if (empty(htmlentities($_POST["confirm_password"]))) {
         $confirm_password_err = "Confirma tu contraseña.";
     } else {
-        $confirm_password = trim($_POST["confirm_password"]);
+        $confirm_password = htmlentities($_POST["confirm_password"]);
         if (empty($password_err) && ($password != $confirm_password)) {
             $confirm_password_err = "No coincide la contraseña.";
         }
