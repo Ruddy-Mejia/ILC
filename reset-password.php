@@ -75,17 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <header class="zerogrid">
-        <div class="logo"><img src="images/logo.png" alt="" /></div>
+        <div class="logo"><img src="images/logo4.png" alt="" /></div>
     </header>
     <meta charset="UTF-8">
     <title>Cambia tu contraseña acá</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body {
-            background-color: #5d6d7e;
-            font: 14px sans-serif;
-        }
-
+        
         .wrapper {
             width: 350px;
             padding: 20px;
@@ -109,8 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 
-<body>
-    <div class="wrapper">
+<body class="wrap-body" style="background:url(images/art2.png) no-repeat fixed 50%">
+    <div>
         <h2 class="myfont">Cambia tu contraseña</h2>
         <p class="myfont">Complete este formulario para restablecer su contraseña.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

@@ -32,25 +32,15 @@
 
 </head>
 
-<body style="background:  #5d6d7e">
+<body style="background:url(images/art2.png) no-repeat fixed 50%">
     <header class="zerogrid">
-        <div class="logo"><img src="images/logo.png" alt="" /></div>
+        <div class="logo"><img src="images/logo4.png" alt="" /></div>
         <div id='cssmenu' class="align-center">
             <ul>
                 <li class="active"><a href='index.html'><span>Inicio</span></a></li>
-                <li><a href='reservas.php'><span>Reservas</span></a></li>
-                <li><a href='galerias.html'><span>Galería</span></a></li>
-                <li class=' has-sub'><a href='#'><span>Tour virtual</span></a>
-                    <ul>
-                        <li><a href='tour.html'><span>Calvario</span></a>
-                        </li>
-                        <li><a href='tour1.html'><span>Playa</span></a>
-                        </li>
-                    </ul>
-                </li>
+                <li><a href='reservas.php'><span>Hoteles</span></a></li>
+                <li><a href='tour.php'><span>Tour virtual</span></a></li>
                 <li><a href='info.html'><span>Más Información</span></a></li>
-                <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
-                <li><a href='eliminar_hoteles.php'><span>Eliminar hoteles</span></a></li>
             </ul>
         </div>
     </header>
@@ -118,7 +108,7 @@
         </div>
         <label class="myfont">IMAGEN</label>
         <div>
-            <input type="file" class="form-control-file myfont" name="imagen" id="imagen" accept="image/png">
+            <input type="file" class="form-control-file myfont" name="imagen" id="imagen" accept="image/*">
         </div>
         <br>
         <div style="width: 600px; height: 300px;" class="form-group" class="boton">

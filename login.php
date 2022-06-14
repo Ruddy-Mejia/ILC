@@ -124,9 +124,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 
-<body>
+<body style="background:url(images/art2.png) no-repeat fixed 50%">
     <header class="zerogrid">
-        <div class="logo"><img src="images/logo.png" alt="" /></div>
+        <div class="logo"><img src="images/logo4.png" alt="" /></div>
     </header>
     <div class="wrapper">
         <center>

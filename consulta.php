@@ -5,8 +5,14 @@ if (!$conn) {
 }
 ?>
 
-<body style="background:  #5d6d7e">
-    <div class="logo"><img src="images/logo.png" alt="" /></div>
+<body style="background:url(images/art2.png) no-repeat fixed 50%">
+    <div id='cssmenu' class="align-right">
+        <ul>
+            <li><a href='login.php'><span>Inicia sesión</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="logo"><img src="images/logo4.png" alt="" /></div>
     <div class="wrap-body">
 
         <head>
@@ -63,28 +69,18 @@ if (!$conn) {
             <div id='cssmenu' class="align-center">
                 <ul>
                     <li class="active"><a href='index.html'><span>Inicio</span></a></li>
-                    <li><a href='reservas.php'><span>Reservas</span></a></li>
-                    <li><a href='galerias.html'><span>Galería</span></a></li>
-                    <li class=' has-sub'><a href='#'><span>Tour virtual</span></a>
-                        <ul>
-                            <li><a href='tour.html'><span>Calvario</span></a>
-                            </li>
-                            <li><a href='tour1.html'><span>Playa</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                    <li><a href='reservas.php'><span>Hoteles</span></a></li>
+                    <li><a href='tour.php'><span>Tour virtual</span></a></li>
                     <li><a href='info.html'><span>Más Información</span></a></li>
-                    <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
-                    <li><a href='eliminar_hoteles.php'><span>Eliminar hoteles</span></a></li>
                 </ul>
             </div>
         </header>
-        
+
         <div class="mycontainer" style="text-align: center; margin:auto;">
             <?php
             $palabra = $_POST['palabra'];
             $query = "select * from hotel where nombre = '$palabra'";
-            $ss = mysqli_query($conn,$query);
+            $ss = mysqli_query($conn, $query);
             while ($rr = mysqli_fetch_array($ss)) {
             ?>
                 <div class="myelement">
@@ -102,7 +98,7 @@ if (!$conn) {
                     <img style="width: 400px;" src="data:image/png; base64, <?php echo base64_encode($rr['imagen']); ?>">
                 </div>
                 <div class="mycontainer" style="border:0px;">
-                    <button type="submit" class="btn btn-primary" name="reservar">Reservar en <?php echo $rr['nombre'];?></button>
+                    <button type="submit" class="btn btn-primary" name="reservar">Reservar en <?php echo $rr['nombre']; ?></button>
                 </div>
                 <br><br><br>
             <?php } ?>
