@@ -29,7 +29,7 @@
         }
 
         .mycontainer {
-            width: 80%;            
+            width: 80%;
             background: #212f3d;
             border: 5px solid #95a5a6;
             display: flex;
@@ -52,14 +52,18 @@
         <div id='cssmenu' class="align-center">
             <ul>
                 <li class="active"><a href='index.html'><span>Inicio</span></a></li>
+                <li><a href='reportes.php'><span>Reportes</span></a></li>
                 <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
-                <li><a href='agregar_habitacion.php'><span>Agregar habitaciones</span></a></li>                
+                <li><a href='agregar_habitacion.php'><span>Agregar habitaciones</span></a></li>
+                <li><a href='register.php'><span>Registrar nuevo administrador</span></a></li>
+                <li><a href='reset-password.php'><span>Cambia de contraseña</span></a></li>
+                <li><a href='logout.php'><span>Cerrar sesión</span></a></li>
             </ul>
         </div>
     </header>
     <br><br>
     <div class="mycontainer" style="margin:auto;text-align:center;">
-        <label class="myfont">Indice de nuevos usuarios</label>
+        <label class="myfont">Indice de nuevas reservas</label>
         <?php
         $conn = mysqli_connect("localhost", "root", "", "ilc");
         if (!$conn) {
@@ -71,11 +75,11 @@
         $cont = 1;
         $us = array();
         $times = array();
-        
-        $ss = mysqli_query($conn, "SELECT created_at from users order by created_at");
+
+        $ss = mysqli_query($conn, "SELECT fecha from reportes order by fecha");
         while ($rr = mysqli_fetch_array($ss)) {
             $us[$cont] = $cont;
-            $times[$cont] = $rr['created_at'];
+            $times[$cont] = $rr['fecha'];
             $cont++;
         }
         $datosX = json_encode($us);

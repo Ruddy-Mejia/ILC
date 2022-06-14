@@ -57,6 +57,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <li><a href='agregar_habitacion.php'><span>Agregar habitaciones</span></a></li>
                 <li><a href='register.php'><span>Registrar nuevo administrador</span></a></li>
                 <li><a href='reset-password.php'><span>Cambia de contraseña</span></a></li>
+                <li><a href='mostrar_reservas.php'><span>Lista de reservas</span></a></li>
                 <li><a href='logout.php'><span>Cerrar sesión</span></a></li>
                 <br><br><iframe width="560" height="315" src="https://www.youtube.com/embed/T0Gi5Fz1SJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </ul>

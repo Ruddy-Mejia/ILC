@@ -47,10 +47,11 @@
             justify-content: space-around;
             align-items: center;
         }
-        
+
         body {
             background: url(images/art2.png) no-repeat fixed 50%;
         }
+
         /*
         body,
         .modal {
@@ -121,7 +122,7 @@
 
 </head>
 
-<body class="wrap-body">    
+<body class="wrap-body">
     <!--
     <div>
         <input type="checkbox" name="" id="btn-modal">
@@ -164,9 +165,66 @@
     if (!$conn) {
         die("No hay conexion: " . mysqli_connect_error());
     }
+
+
+    if (isset($_REQUEST['reservar'])) {
+        $entrada = $_POST['entrada'];
+        $salida = $_POST['salida'];
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $email = $_POST['email'];
+        $id_habitacion = $_POST['reservar'];
+        //echo "<script> alert('id func = $id_habitacion');</script>";        
+        //mysqli_query($conn, $query);
+
+        /*
+        echo "<script> alert('nombre = $nombre');</script>";
+        echo "<script> alert('apellido = $apellido');</script>";
+        echo "<script> alert('email = $email');</script>";
+        echo "<script> alert('id = $id_habitacion');</script>";
+        */
+
+        if ($entrada > $salida) {
+            echo "<script> alert('Por favor revise las fechas introducidas'); 
+            window.location = 'reservas.php';
+            </script>";
+        } else {
+            $q = "insert into reservas (id_habitacion, nombres, apellidos, email) values (23,Ruddy,Mejia,ruddymejiamamani73@gmail.com)";
+            //       "insert into reservas (id_habitacion, nombres, apellidos, email) values (,,,)"
+            $query = "insert into reservas (id_habitacion, nombres, apellidos, email) values ($id_habitacion, $nombre, $apellido, $email)";
+
+            if (mysqli_query($conn, $q)) {
+                echo "<script> alert('La reserva se realizó con éxito');
+                        window.location = 'index.html';
+                    </script>";
+            } else {
+                echo "<script> alert('Error: la reserva no se realizó');
+                    window.location = 'reservas.php';
+                    </script>";
+            }
+        }
+    }
     ?>
 
-    <form action="form_reserva.php" method="POST" class="mycontainer" style="text-align: center; margin:auto;">
+    <br><br>
+    <form method="POST" class="mycontainer" style="text-align: center; margin:auto;">
+        <div class="mycontainer" style="border:0px; width:100%; height:80px;">
+            <label class="myfont" style="color:#fff; font-size:xx-large;">Datos personales</label>
+        </div>
+        <div class="mycontainer" style="border:0px; width:100%; height:80px;">
+            <label class="myfont" style="color:#fff;">Nombre</label>
+            <input type="text" style="width:30%" class="form-control" name="nombre">
+            <label class="myfont" style="color:#fff">Apellido</label>
+            <input type="text" style="width:30%" class="form-control" name="apellido">
+        </div>
+        <div class="mycontainer" style="border:0px; width:100%; height:80px;">
+            <label class="myfont" style="color:#fff;">Fecha llegada</label>
+            <input type="date" style="width:20%" class="form-control" name="entrada">
+            <label class="myfont" style="color:#fff">Fecha salida</label>
+            <input type="date" style="width:20%" class="form-control" name="salida">
+            <label class="myfont" style="color:#fff">Email</label>
+            <input type="email" style="width:20%" class="form-control" name="email">
+        </div>
         <?php
         $id_hotel = $_POST['id_hotel'];
         $cont = 0;
@@ -191,11 +249,14 @@
             <div>
                 <img style="width: 400px;" src="data:image/*; base64, <?php echo base64_encode($rr['imagen']); ?>">
             </div>
-            <div class="mycontainer" style="border:0px; width:100%; height:80px">                
-                <button type="submit" class="btn btn-primary"  value="<?php echo $rr['id_habitacion']; ?>" name="reservar">Reservar</button>                
+            <div class="mycontainer" style="border:0px; width:100%; height:80px">
+                <button type="submit" class="btn btn-primary" value="<?php echo $rr['id_habitacion']; ?>" name="reservar">Reservar</button>
             </div>
+
+
             <br><br><br>
         <?php }
+
         if ($cont == 0) {
             echo "<script> alert('Sin habitaciones'); window.location = 'reservas.php'</script>";
         }

@@ -38,9 +38,12 @@
         <div id='cssmenu' class="align-center">
             <ul>
                 <li class="active"><a href='index.html'><span>Inicio</span></a></li>
-                <li><a href='reservas.php'><span>Hoteles</span></a></li>
-                <li><a href='tour.php'><span>Tour virtual</span></a></li>
-                <li><a href='info.html'><span>Más Información</span></a></li>
+                <li><a href='reportes.php'><span>Reportes</span></a></li>
+                <li><a href='agregar_hoteles.php'><span>Agregar hoteles</span></a></li>
+                <li><a href='agregar_habitacion.php'><span>Agregar habitaciones</span></a></li>
+                <li><a href='register.php'><span>Registrar nuevo administrador</span></a></li>
+                <li><a href='reset-password.php'><span>Cambia de contraseña</span></a></li>
+                <li><a href='logout.php'><span>Cerrar sesión</span></a></li>
             </ul>
         </div>
     </header>
