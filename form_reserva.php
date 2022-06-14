@@ -53,49 +53,14 @@
 
     <body>
 
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "ilc");
-        if (!$conn) {
-            die("No hay conexion: " . mysqli_connect_error());
-        }
-
-        if (isset($_REQUEST['guardar'])) {
-            $entrada = $_POST['entrada'];                          
-            $salida = $_POST['salida'];            
-            $nombre = $_POST['nombres'];
-            $apellido = $_POST['apellidos'];
-            $email = $_POST['email'];   
-            $id_habitacion = $_POST['guardar'];
-            echo "<script>alert('$id_habitacion')</script>";  
-            /*           
-            if ($entrada > $salida) {
-                echo "<script> alert('Por favor revise las fechas introducidas'); 
-            window.location = 'habitacion.php';
-            </script>";
-            } else {*/
-                //"insert into reservas (id_habitacion, nombres, apellidos, email) values (,,,)"
-                $cons =  "insert into reservas (id_habitacion, nombres, apellidos, email) values ($id_habitacion, $nombre, $apellido, $email)";
-                $q = "insert into reservas (id_habitacion, nombres, apellidos, email) values (1,'test','test','test')" ;
-                
-                if (mysqli_query($conn, $q)) {
-                    echo "<script> alert('La reserva se realizó con éxito');
-                        window.location = 'index.html';
-                    </script>";
-                } else {
-                    echo "<script> alert('Error: la reserva no se realizó');
-                    window.location = 'reservas.php';
-                    </script>";
-                }
-            //}
-        }
-        ?>
+        
 
 
-
-
-        <form method="POST" style="width: 600px; margin: auto;">
+        <form method="POST" action="new.php" style="width: 600px; margin: auto;">
             <?php
+
             $id = $_POST['reservar'];
+            echo "<script> alert('id = $id');</script>";
             ?>
             <div>
                 <label class="myfont">NOMBRES</label>
